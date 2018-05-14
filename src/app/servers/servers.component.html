@@ -1,9 +1,11 @@
 <div class="row">
-  <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
+<!--   <button class="btn btn-primary" (click)="onReload()">Reload Page</button> -->
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a
-        href="#"
+        [routerLink] = "['/servers', server.id]"
+        [queryParams] = "{allowEdit : server.id === 3 ? '1' : '0'}"
+        fragment = "Prueba"
         class="list-group-item"
         *ngFor="let server of servers">
         {{ server.name }}
@@ -11,9 +13,10 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <app-edit-server></app-edit-server>
+    <router-outlet></router-outlet>
+<!--     <app-edit-server></app-edit-server>
     <hr>
-    <app-server></app-server>
+    <app-server></app-server> -->
   </div>
 </div>
 
